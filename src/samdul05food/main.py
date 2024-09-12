@@ -6,6 +6,13 @@ import pandas as pd
 
 app = FastAPI()
 
+
+def get_path():
+    file_path=__file__
+    dirpath = os.path.dirname(file_path)
+    return dirpath
+    
+
 @app.get("/")
 def read_root():
     return {"Hello": "n05"}
@@ -16,9 +23,8 @@ def food(name:str):
     time = datetime.now()
     time = time.strftime('%Y-%m-%d %H:%M:%S')
     # 음식 이름과 시간을 csv로 저장 -> /code/data/food.csv
-    home_path = os.path.expanduser('~')
-    file_path=f"{home_path}/data/foodapp/data.csv"
-    data_path=f"{home_path}/data/foodapp/"
+    data_path=get_path()
+    file_path=f"{data_path}/data.csv"
     if os.path.exists(file_path):
         df=pd.read_csv(file_path)     
     else :
@@ -29,7 +35,7 @@ def food(name:str):
             }
         )
     df.loc[len(df)] = [name,time]
-    os.makedirs(os.path.dirname(data_path), exist_ok = True)
+    os.makedirs(data_path, exist_ok = True)
     df.to_csv(file_path,index=False)
     
     
