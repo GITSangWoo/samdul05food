@@ -3,6 +3,7 @@ from typing import Union
 from datetime import datetime 
 import os 
 import pandas as pd
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
 
