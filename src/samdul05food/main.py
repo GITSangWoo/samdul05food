@@ -23,8 +23,8 @@ def food(name:str):
     time = datetime.now()
     time = time.strftime('%Y-%m-%d %H:%M:%S')
     # 음식 이름과 시간을 csv로 저장 -> /code/data/food.csv
-    data_path=os.path.join(get_path(),"fooddata")
-    file_path=f"{data_path}/food.csv"
+    data_path=os.path.join(get_path(),"food05data")
+    file_path=f"{data_path}/food05.csv"
     if os.path.exists(file_path):
         df=pd.read_csv(file_path)     
     else :
