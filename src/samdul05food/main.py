@@ -8,7 +8,7 @@ from fastapi.middleware.cors import CORSMiddleware
 app = FastAPI()
 
 origins = [
-    "http://localhost",
+    "http://localhost:8000",
     "http://localhost:8899",
 ]
 
@@ -31,7 +31,7 @@ def read_root():
     return {"Hello": "n05"}
 
 @app.get("/food")
-def food(name:str):
+def food(writername:str,foodname:str):
     # 시간을 구함
     time = datetime.now()
     time = time.strftime('%Y-%m-%d %H:%M:%S')
@@ -43,15 +43,16 @@ def food(name:str):
     else :
         df=pd.DataFrame(
             {
+            'writer' :[],
             'food' : [],
             'time': [],
             }
         )
-    df.loc[len(df)] = [name,time]
+    df.loc[len(df)] = [writername,foodname,time]
     os.makedirs(data_path, exist_ok = True)
     df.to_csv(file_path,index=False)
     
     
-    return {"food":name, "time": time }
+    return {"writer":writername,"food":foodname, "time": time }
 
 

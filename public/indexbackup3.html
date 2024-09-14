@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
@@ -5,15 +6,9 @@
     <title>삼둘푸드</title>
 </head>
 <body>
-   <h1>음식 이름 입력</h1>
-    <form id="foodForm"><form action="#">    
-  <label for="foodName">[ID 선택] -음식 이름: </label>
-   <select name="writerName" id="writerName">
-    <option value="n00">n00</option>
-    <option value="n01">n01</option>
-    <option value="n02">n02</option>
-
-  </select>
+    <h1>음식 이름 입력</h1>
+    <form id="foodForm">
+        <label for="foodName">음식 이름: </label>
         <input type="text" id="foodName" name="foodName" required>
         <button type="submit">저장</button>
     </form>
@@ -23,8 +18,7 @@
             event.preventDefault(); // 폼 기본 제출 방지
 
             const foodName = document.getElementById("foodName").value;
-          	const writerName = document.getElementById("writerName").value;
-            const url = `http://localhost:8000/food?writername=${encodeURIComponent(writerName)}&foodname=${encodeURIComponent(foodName)}`;
+            const url = `http://localhost:8765/n05/food?name=${encodeURIComponent(foodName)}`;
 
             fetch(url, {
                 method: 'GET',
