@@ -5,7 +5,7 @@
 groups = ["default"]
 strategy = ["inherit_metadata"]
 lock_version = "4.5.0"
-content_hash = "sha256:203c1faefa831b31c9e25a1fed6981479007f0cee019afb28e3dd65c21bfe424"
+content_hash = "sha256:9109b51463b5f1b3c29d9e686308b2e5f94e2ac808cdf09db8a53d208dc4461d"
 
 [[metadata.targets]]
 requires_python = "==3.11.*"
@@ -212,6 +212,17 @@ files = [
     {file = "pydantic_core-2.23.3-cp311-none-win32.whl", hash = "sha256:560e32f0df04ac69b3dd818f71339983f6d1f70eb99d4d1f8e9705fb6c34a5c1"},
     {file = "pydantic_core-2.23.3-cp311-none-win_amd64.whl", hash = "sha256:c744fa100fdea0d000d8bcddee95213d2de2e95b9c12be083370b2072333a0fa"},
     {file = "pydantic_core-2.23.3.tar.gz", hash = "sha256:3cb0f65d8b4121c1b015c60104a685feb929a29d7cf204387c7f2688c7974690"},
+]
+
+[[package]]
+name = "pymysql"
+version = "1.1.1"
+requires_python = ">=3.7"
+summary = "Pure Python MySQL Driver"
+groups = ["default"]
+files = [
+    {file = "PyMySQL-1.1.1-py3-none-any.whl", hash = "sha256:4de15da4c61dc132f4fb9ab763063e693d521a80fd0e87943b9a453dd4c19d6c"},
+    {file = "pymysql-1.1.1.tar.gz", hash = "sha256:e127611aaf2b417403c60bf4dc570124aeb4a57f5f37b8e95ae399a42f904cd0"},
 ]
 
 [[package]]

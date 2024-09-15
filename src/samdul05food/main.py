@@ -1,9 +1,11 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from typing import Union
 from datetime import datetime 
+from pytz import timezone
+import pymysql 
 import os 
 import pandas as pd
-from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
 
@@ -33,7 +35,7 @@ def read_root():
 @app.get("/food")
 def food(writername:str,foodname:str):
     # 시간을 구함
-    time = datetime.now()
+    time = datetime.now(timezone('Asia/Seoul'))
     time = time.strftime('%Y-%m-%d %H:%M:%S')
     # 음식 이름과 시간을 csv로 저장 -> /code/data/food.csv
     data_path=os.path.join(get_path(),"food05data")
@@ -51,8 +53,13 @@ def food(writername:str,foodname:str):
     df.loc[len(df)] = [writername,foodname,time]
     os.makedirs(data_path, exist_ok = True)
     df.to_csv(file_path,index=False)
-    
-    
+    # DB 저장 
+    conn = pymysql.connect(host='172.17.0.1', port=13306, user='food', password='1234', db='fooddb', charset='utf8')
+    cur =  conn.cursor(pymysql.cursors.DictCursor) 
+    query = "INSERT INTO foodhistory(username, foodname,dt) VALUES (%s, %s, %s)"
+    cur.execute(query,(writername,foodname,time))
+    conn.commit()
+
     return {"writer":writername,"food":foodname, "time": time }
 
 

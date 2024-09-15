@@ -1,6 +1,6 @@
 [project]
 name = "samdul05food"
-version = "0.2.1"
+version = "0.2.2"
 description = "Default template for PDM package"
 authors = [
     {name = "GITSangWoo", email = "dogcenta@gmail.com"},
@@ -9,6 +9,7 @@ dependencies = [
     "fastapi>=0.114.1",
     "uvicorn[standard]>=0.30.6",
     "pandas>=2.2.2",
+    "pymysql>=1.1.1",
 ]
 requires-python = "==3.11.*"
 readme = "README.md"
