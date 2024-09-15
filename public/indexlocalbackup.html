@@ -48,7 +48,7 @@
 
             const foodName = document.getElementById("foodName").value;
           	const writerName = document.getElementById("writerName").value;
-            const url = `https://api.samdulshop.shop/n05/food?writername=${encodeURIComponent(writerName)}&foodname=${encodeURIComponent(foodName)}`;
+            const url = `http://localhost:8765/n05/food?writername=${encodeURIComponent(writerName)}&foodname=${encodeURIComponent(foodName)}`;
 
             fetch(url, {
                 method: 'GET',
