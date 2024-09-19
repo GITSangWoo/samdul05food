@@ -54,8 +54,7 @@ def food(writername:str,foodname:str):
     os.makedirs(data_path, exist_ok = True)
     df.to_csv(file_path,index=False)
     # DB 저장 
-    # conn = pymysql.connect(host='172.17.0.1', port=13306, user='food', password='1234', db='fooddb', charset='utf8')
-    conn = pymysql.connect(host=os.getenv("DB_IP","localhost"), port=os.getenv("DB_PORT",13306), user='food', password='1234', db='fooddb', charset='utf8')
+    conn = pymysql.connect(host='172.17.0.1', port=13306, user='food', password='1234', db='fooddb', charset='utf8')
     cur =  conn.cursor(pymysql.cursors.DictCursor) 
     query = "INSERT INTO foodhistory(username, foodname,dt) VALUES (%s, %s, %s)"
     cur.execute(query,(writername,foodname,time))
